@@ -47,10 +47,10 @@ class Deck:
 		return x
 
 class Game:
-	def __init__(self):
+	def __init__(self, n):
 		self.deck = Deck()
 		self.deck.shuffle()
-		self.player_count = 4
+		self.player_count = n
 		self.player_hands = self.deck.deal(self.player_count)
 		
 		self.played_cards = {}
@@ -109,7 +109,7 @@ class Game:
 		
 
 if __name__ == "__main__":
-	g = Game()
+	g = Game(4)
 	print g
 	cur_player = g.get_starter()
 	g.play_card(cur_player,Card("hearts", 7))
