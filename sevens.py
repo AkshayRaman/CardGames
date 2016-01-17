@@ -113,8 +113,8 @@ if __name__ == "__main__":
 	print g
 	cur_player = g.get_starter()
 	g.play_card(cur_player,Card("hearts", 7))
-	cur_player += 1
-	cur_player %= (g.player_count)
+	#cur_player += 1
+	cur_player = (cur_player+1)%(g.player_count)
 
 	while True:
 		print g
@@ -130,10 +130,10 @@ if __name__ == "__main__":
 						print "Player: %s -> Score: %s" %(player, score)
 					sys.exit(0)
 				
-				cur_player += 1
-				cur_player %= (g.player_count)
+				#cur_player += 1
+				cur_player = (cur_player+1)%(g.player_count)
 				break
 				
 		print "%s said pass." %(cur_player)
-		cur_player += 1
-		cur_player %= (g.player_count)
+		#cur_player += 1
+		cur_player = (cur_player+1)%(g.player_count)
