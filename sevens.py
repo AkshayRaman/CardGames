@@ -102,7 +102,7 @@ class Game:
 				card_loss_map[most_loss] = card
 		
 		if card_loss_map:
-			print "Player %s's choice: %s" %(player, [(j.__str__(),i) for i,j in card_loss_map.iteritems()])
+			print "Player %s's choices: %s" %(player, [(j.__str__(),i) for i,j in card_loss_map.iteritems()])
 			return card_loss_map[max(card_loss_map.keys())]
 		return None
 	
@@ -111,6 +111,7 @@ class Game:
 			return card
 		card_to_play = self.best_card_to_play(player)
 		if card_to_play:
+			print "Player %s played %s." %(player, card)
 			return self.play_card_inner(player, card_to_play)
 		return None
 	
@@ -120,7 +121,7 @@ class Game:
 		max_loss = 0
 		if not self.played_cards[suit] and num==7:
 			self.played_cards[suit].extend([7,7])
-			print "Player %s played %s." %(player, card)
+			
 			if card in self.player_hands[player]:
 				self.player_hands[player].remove(card)
 			return card
@@ -130,19 +131,16 @@ class Game:
 				return None
 			if self.played_cards[suit][0] == num+1:
 				self.played_cards[suit][0] = num
-				print "Player %s played %s." %(player, card)
 				if card in self.player_hands[player]:
 					self.player_hands[player].remove(card)
 				return card
 			elif self.played_cards[suit][1] == num-1:
 				self.played_cards[suit][1] = num
-				print "Player %s played %s." %(player, card)
 				if card in self.player_hands[player]:
 					self.player_hands[player].remove(card)
 				return card
 			else:
 				return None
-		
 	
 
 if __name__ == "__main__":
